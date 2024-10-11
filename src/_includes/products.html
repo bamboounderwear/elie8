@@ -1,15 +1,17 @@
 ---
 title: {{ title }}
+description: {{ description }}  <!-- Make sure to pass description too -->
 layout: default
 ---
 
 <div class="container max-w-4xl mt-6 px-6">
     <h1 class="font-bold text-5xl">{{ title }}</h1>
+    <p class="text-lg mt-4">{{ description }}</p>
     <p class="text-lg mt-4">Price: ${{ price }}</p>
     <div class="my-6">
         <img src="{{ image }}" alt="{{ title }}" class="w-full max-w-md mx-auto">
     </div>
     <article class="prose lg:prose-xl my-4 mx-auto">
-        {{ description }}
+        {{ content | safe }} <!-- This is where your product body will go -->
     </article>
 </div>
