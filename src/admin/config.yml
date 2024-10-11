@@ -11,7 +11,9 @@ public_folder: "/static/img"
 # Please run "npx netlify-cms-proxy-server" for local backend
 local_backend: true
 # publish_mode: editorial_workflow
+
 collections:
+  # Blog Posts
   - label: "Blog"
     name: "blog"
     folder: "src/posts"
@@ -25,11 +27,52 @@ collections:
       - { label: "Publish Date", name: "date", widget: "datetime" }
       - { label: "Body", name: "body", widget: "markdown" }
       - widget: select
-        label: "tags"
+        label: "Tags"
         name: "tags"
         multiple: true
         create: true
         options: ["Tags", "created", "from", "config.yml"]
+
+  # Pages
+  - label: "Pages"
+    name: "pages"
+    folder: "src/pages"
+    create: true
+    editor:
+      preview: false
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Body", name: "body", widget: "markdown" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+
+  # Products
+  - label: "Products"
+    name: "products"
+    folder: "src/products"
+    create: true
+    editor:
+      preview: false
+    fields:
+      - { label: "Product Name", name: "title", widget: "string" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Price", name: "price", widget: "number" }
+      - { label: "Product Image", name: "image", widget: "image" }
+      - { label: "Tags", name: "tags", widget: "list", default: [] }
+
+  # Patterns (PDF downloads)
+  - label: "Patterns"
+    name: "patterns"
+    folder: "src/patterns"
+    create: true
+    editor:
+      preview: false
+    fields:
+      - { label: "Pattern Name", name: "title", widget: "string" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "PDF File", name: "file", widget: "file", media_library: { allow_multiple: false, config: { media_type: 'application/pdf' } } }
+      - { label: "Tags", name: "tags", widget: "list", default: [] }
+
+  # Settings
   - label: "Settings"
     name: "settings"
     editor:
